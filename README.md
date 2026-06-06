@@ -45,8 +45,3 @@ Este cuadro de mando permite a cualquier usuario filtrar la información de todo
 * **Filtros Cruzados Activos (Interacciones):** Al dar clic directamente sobre cualquier barra de la gráfica (por ejemplo, "MOTO"), todo el tablero se actualiza al instante de forma nativa para mostrar únicamente las métricas y KPI asociados a esa selección.
 
 ---
-
-
-1. Clona este repositorio:
-   ```bash
-   git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/tu-usuario/tu-repositorio.git)
