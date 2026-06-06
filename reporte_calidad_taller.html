@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reporte de Eficiencia Operativa y Rentabilidad</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --color-background-primary: #faf8f5;
+      --color-text-primary: #2c3e50;
+      --color-text-secondary: #7f8c8d;
+      --color-border-tertiary: #e2e8f0;
+      --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body { margin: 0; padding: 0; background-color: var(--color-background-primary); }
+    .rpt { font-family: 'Georgia', serif; max-width: 800px; margin: 0 auto; padding: 2rem 2.5rem; color: var(--color-text-primary); }
+    .cover-bar { height: 6px; background: #1A3A5C; border-radius: 3px; margin-bottom: 2rem; }
+    .cover-logo { font-size: 11px; letter-spacing: 2px; color: #1A3A5C; font-family: var(--font-sans); font-weight: 500; text-transform: uppercase; }
+    .cover-title { font-size: 26px; font-weight: 400; line-height: 1.3; margin: 1.5rem 0 0.4rem; }
+    .cover-sub { font-size: 13px; color: var(--color-text-secondary); font-family: var(--font-sans); margin-bottom: 2rem; }
+    .divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1.5rem 0; }
+    .section-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-sans); color: #1A3A5C; font-weight: 500; margin-bottom: 0.6rem; }
+    
+    /* Grid de KPIs */
+    .kpi-grid { display: table; width: 100%; margin: 1.5rem 0; border-collapse: separate; border-spacing: 10px 0; }
+    .kpi-card { display: table-cell; width: 25%; background: #ffffff; padding: 1.2rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); text-align: center; }
+    .kpi-val { font-size: 20px; font-weight: bold; color: #1A3A5C; font-family: var(--font-sans); }
+    .kpi-lbl { font-size: 11px; color: var(--color-text-secondary); font-family: var(--font-sans); margin-top: 4px; }
+    
+    /* Tablas profesionales */
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-family: var(--font-sans); font-size: 12px; }
+    th { background-color: #1A3A5C; color: white; padding: 10px; text-align: left; font-weight: 500; }
+    td { padding: 10px; border-bottom: 1px solid var(--color-border-tertiary); color: #34495e; }
+    tr:nth-child(even) { background-color: #f8fafc; }
+    
+    /* Layout de gráficos */
+    .chart-container { background: #ffffff; padding: 1.5rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); margin-bottom: 1.5rem; height: 260px; position: relative; }
+    .insights-box { background: #f0f4f8; border-left: 4px solid #1A3A5C; padding: 1rem; margin-top: 1rem; font-size: 13px; font-style: italic; }
+  </style>
+</head>
+<body>
+
+  <div class="rpt">
+    <div class="cover-bar"></div>
+    <div class="cover-logo">AUTOMOTIVE OPERATIONS INSIGHTS</div>
+    <h1 class="cover-title">Reporte de Eficiencia Operativa y Rentabilidad del Taller</h1>
+    <div class="cover-sub">Análisis automatizado del histórico de órdenes de servicio e indicadores de calidad.</div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Métricas de Control Principal</div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-val">2001</div>
+        <div class="kpi-lbl">Órdenes Atendidas</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">6.7%</div>
+        <div class="kpi-lbl">Tasa de Garantía</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">731.8</div>
+        <div class="kpi-lbl">Score Satisfacción</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">$7,990,569.24</div>
+        <div class="kpi-lbl">Ingresos Totales (MXN)</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Distribución de Servicios por Tipo de Vehículo</div>
+    <div class="chart-container">
+      <canvas id="barChart"></canvas>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Desempeño y Calidad por Tipo de Servicio</div>
+    <p style="font-size: 13px; color: var(--color-text-secondary);">Análisis granular por categoría de trabajo realizado en las unidades mecánicas.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo de Servicio</th>
+          <th>Total Órdenes</th>
+          <th>Garantías</th>
+          <th>Tasa Garantía</th>
+          <th>Satisfacción Prom.</th>
+          <th>Ingreso Prom. (MXN)</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><strong>Correctivo Motor</strong></td>
+          <td>428</td>
+          <td>52</td>
+          <td>12.1%</td>
+          <td>680.0</td>
+          <td>$8,724.83</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Estética/Detallado</strong></td>
+          <td>231</td>
+          <td>10</td>
+          <td>4.3%</td>
+          <td>791.0</td>
+          <td>$1,093.70</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Mantenimiento Preventivo</strong></td>
+          <td>716</td>
+          <td>33</td>
+          <td>4.6%</td>
+          <td>742.0</td>
+          <td>$1,332.96</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Sistema Eléctrico</strong></td>
+          <td>274</td>
+          <td>24</td>
+          <td>8.8%</td>
+          <td>719.0</td>
+          <td>$4,045.08</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Sistema de Frenos</strong></td>
+          <td>351</td>
+          <td>15</td>
+          <td>4.3%</td>
+          <td>746.0</td>
+          <td>$2,680.75</td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Evolución de Calidad Mensual vs Meta del Taller</div>
+    <div class="chart-container">
+      <canvas id="lineChart"></canvas>
+    </div>
+
+    <div class="section-label">Conclusiones Analíticas del Negocio</div>
+    <div class="insights-box">
+      Los datos históricos muestran que los servicios largos en taller incrementan de manera lineal la probabilidad de activación de garantías, requiriendo un ajuste inmediato en los protocolos de control de calidad final de la operación.
+    </div>
+
+  </div>
+
+  <script>
+    // --- 1. CONFIGURACIÓN DEL GRÁFICO DE BARRAS ---
+    const labelsVehiculos = ["Moto Alta Cilindrada", "Moto Urbana", "Pick-up", "SUV", "Sed\u00e1n"];
+    const dataVehiculos = [194, 239, 382, 562, 623];
+
+    new Chart(document.getElementById('barChart'), {
+      type: 'bar',
+      data: {
+        labels: labelsVehiculos,
+        datasets: [{
+          label: 'Órdenes por Tipo de Vehículo',
+          data: dataVehiculos,
+          backgroundColor: '#1A3A5C',
+          borderRadius: 4,
+          barThickness: 25
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    // --- 2. CONFIGURACIÓN DEL GRÁFICO DE LÍNEAS ---
+    const mesesHistoricos = ["Apr", "Aug", "Dec", "Feb", "Jan", "Jul", "Jun", "Mar", "May", "Nov", "Oct", "Sep"];
+    const tasasMensuales = [4.1, 4.0, 10.2, 6.4, 6.9, 6.8, 9.3, 5.2, 8.6, 7.0, 5.0, 6.5];
+    const metaEstablecida = [4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0];
+
+    new Chart(document.getElementById('lineChart'), {
+      type: 'line',
+      data: {
+        labels: mesesHistoricos,
+        datasets: [
+          {
+            label: 'Tasa de Garantía Real',
+            data: tasasMensuales,
+            borderColor: '#1A3A5C',
+            backgroundColor: '#1A3A5C',
+            tension: 0.2,
+            borderWidth: 2
+          },
+          {
+            label: 'Meta Límite Taller',
+            data: metaEstablecida,
+            borderColor: '#e74c3c',
+            borderDash:Array(5, 5), // Línea punteada roja
+            backgroundColor: 'transparent',
+            pointRadius: 0, // Sin puntos estorbosos
+            borderWidth: 2
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: { boxWidth: 12, font: { size: 11 } }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Porcentaje (%)', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
